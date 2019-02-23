@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo beginning compilation of files
+
+make
+
+echo deleting all previous test cases
+rm ./output/wshorrock_testcase1.out
+rm ./output/wshorrock_testcase2.out
+rm ./output/wshorrock_testcase3.out
+rm ./output/wshorrock_testcase4.out
+rm ./output/wshorrock_testcase5.out
+rm ./output/wshorrock_testcase6.out
+rm ./output/finaloutput.txt
+
+echo running programming and writing output test cases
+./bin/testcase1 >> ./output/wshorrock_testcase1.out
+./bin/testcase2 >> ./output/wshorrock_testcase2.out
+./bin/testcase3 >> ./output/wshorrock_testcase3.out
+./bin/testcase4 >> ./output/wshorrock_testcase4.out
+./bin/testcase5 >> ./output/wshorrock_testcase5.out
+./bin/testcase6 >> ./output/wshorrock_testcase6.out
+
+echo comparing test cases to desired outputs
+echo Test Case 1: >> ./output/finaloutput.txt
+diff ./output/wshorrock_testcase1.out testcases/testcase1.out >> ./output/finaloutput.txt
+echo Test Case 2: >> ./output/finaloutput.txt
+diff ./output/wshorrock_testcase2.out testcases/testcase2.out >> ./output/finaloutput.txt
+echo Test Case 3: >> ./output/finaloutput.txt
+diff ./output/wshorrock_testcase3.out testcases/testcase3.out >> ./output/finaloutput.txt
+echo Test Case 4: >> ./output/finaloutput.txt
+diff ./output/wshorrock_testcase4.out testcases/testcase4.out >> ./output/finaloutput.txt
+echo Test Case 5: >> ./output/finaloutput.txt
+diff ./output/wshorrock_testcase5.out testcases/testcase5.out >> ./output/finaloutput.txt
+echo Test Case 6: >> ./output/finaloutput.txt
+diff ./output/wshorrock_testcase6.out testcases/testcase6.out >> ./output/finaloutput.txt
